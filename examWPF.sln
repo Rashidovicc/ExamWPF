@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "examWPF", "examWPF\examWPF.csproj", "{625B9972-01A1-4637-AA68-20E32E089C0B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "examWPF.Domain", "examWPF.Domain\examWPF.Domain.csproj", "{7F2B7BFC-C985-497F-ACD2-2472362A9513}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "examWPF.Data", "examWPF.Data\examWPF.Data.csproj", "{100FE3D6-FA8A-4E4D-AAD9-70B1C6200569}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "examWPF.Service", "examWPF.Service\examWPF.Service.csproj", "{2F96D0F8-115F-4981-9127-137316ED450A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{625B9972-01A1-4637-AA68-20E32E089C0B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{625B9972-01A1-4637-AA68-20E32E089C0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{625B9972-01A1-4637-AA68-20E32E089C0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{625B9972-01A1-4637-AA68-20E32E089C0B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F2B7BFC-C985-497F-ACD2-2472362A9513}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F2B7BFC-C985-497F-ACD2-2472362A9513}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F2B7BFC-C985-497F-ACD2-2472362A9513}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F2B7BFC-C985-497F-ACD2-2472362A9513}.Release|Any CPU.Build.0 = Release|Any CPU
+		{100FE3D6-FA8A-4E4D-AAD9-70B1C6200569}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{100FE3D6-FA8A-4E4D-AAD9-70B1C6200569}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{100FE3D6-FA8A-4E4D-AAD9-70B1C6200569}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{100FE3D6-FA8A-4E4D-AAD9-70B1C6200569}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F96D0F8-115F-4981-9127-137316ED450A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F96D0F8-115F-4981-9127-137316ED450A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F96D0F8-115F-4981-9127-137316ED450A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F96D0F8-115F-4981-9127-137316ED450A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

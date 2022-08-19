@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>WinExe</OutputType>
+        <TargetFramework>net5.0-windows</TargetFramework>
+        <UseWPF>true</UseWPF>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="MaterialDesignColors" Version="2.0.7-ci273" />
+      <PackageReference Include="MaterialDesignThemes" Version="4.6.0-ci273" />
+      <PackageReference Include="Newtonsoft.Json" Version="13.0.2-beta1" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\examWPF.Domain\examWPF.Domain.csproj" />
+      <ProjectReference Include="..\examWPF.Service\examWPF.Service.csproj" />
+    </ItemGroup>
+
+</Project>

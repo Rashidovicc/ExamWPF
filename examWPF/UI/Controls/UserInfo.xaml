@@ -1,0 +1,56 @@
+﻿<UserControl x:Class="examWPF.UI.Controls.UserInfo"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:examWPF.UI.Controls"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d" MouseDown="ID_OnMouseDown"
+             Height="60" MinWidth="250" MaxWidth="400">
+    <Grid Background="#1C3879" >
+        <Border Background="#EAE3D2"  Margin="2">
+            
+            <Grid>
+                
+                <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="60"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+        
+        
+            <Grid Grid.Column="0">
+                <Ellipse Margin="10" >
+                    <Ellipse.Fill>
+                        <ImageBrush x:Name="UserImg" ImageSource="https://talabamiz.uz/Images//99daf8ac38de4433aa36a61baf4c9c4d.png"/>
+                    </Ellipse.Fill>
+                </Ellipse>
+            </Grid>
+            
+                
+        
+            <Grid Grid.Column="1">
+                <Grid Margin="7">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="40"/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Left">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="User" Foreground="#231955"/>
+                            <TextBlock x:Name="NameTxt" Text=".NET Bootcamp N2" Foreground="#231955" FontWeight="DemiBold"
+                                       FontSize="13" Margin="10 0 0 10"/>
+                        </StackPanel>
+                        <TextBlock Name="FacultyMsgTxt" Text="Videoni tashlab yuboring..." Foreground="#1F4690"/>
+                    </StackPanel>
+                    <StackPanel Grid.Column="1">
+                        <TextBlock Name="DateTimeTxt" Text="16:53" Foreground="#231955" HorizontalAlignment="Center" Margin="0 0 0 10"/>
+                    
+                    </StackPanel>
+                </Grid>
+                <TextBlock x:Name="ID" Visibility="Collapsed"></TextBlock>
+            </Grid>
+            </Grid>
+            
+        </Border>
+    </Grid>
+</UserControl>
