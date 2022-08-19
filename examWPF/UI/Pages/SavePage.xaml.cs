@@ -72,18 +72,22 @@ namespace examWPF.UI.Pages
                     updateStudentInfo.Faculty = oldStudent.Faculty;
 
 
-                var response = await studentService.UpdateAsync(result, updateStudentInfo);
+                
                  
                 if (_imagePath != null && _passportImagePath != null)
-                    await studentService.PassPicturesAsync(oldStudent.Id, _imagePath, _passportImagePath);
+                    await studentService.UploadPicturesAsync(oldStudent.Id, _imagePath, _passportImagePath);
 
                 else if (_imagePath != null && _passportImagePath == null ||
                     _imagePath == null && _passportImagePath != null)
                 {
                     ErrorResponse.Text = "Please upload both images";
                     ErrorResponse.Visibility = Visibility.Visible;
+                    
+                    return;
                 }
 
+                var response = await studentService.UpdateAsync(result, updateStudentInfo);
+                
                 if (response is not null)
                 {
                     MessageViewer messageViewer = new MessageViewer();

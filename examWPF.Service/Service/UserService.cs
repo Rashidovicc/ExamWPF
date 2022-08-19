@@ -19,10 +19,14 @@ namespace examWPF.Service.Service
     {
         private readonly HttpClient _httpClient;
         private readonly IUserRepository _userRepository;
+        private readonly AttachmentRepository attachmentRepository;
+
 
         private readonly string _url = ApiConstants.BASE_URL + "Students/";
+
         public UserService()
         {
+            attachmentRepository = new AttachmentRepository();
             _userRepository = new UserRepository();
             _httpClient = new HttpClient();
         }
@@ -44,34 +48,41 @@ namespace examWPF.Service.Service
         public async Task<IEnumerable<User>> GetAllAsync()
         {
             _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue
-                ("Basic",Convert.ToBase64String(Encoding.ASCII.GetBytes("admin:12345")));
-            
+                ("Basic", Convert.ToBase64String(Encoding.ASCII.GetBytes("admin:12345")));
+
             var response = await _httpClient.GetAsync(_url);
-            
+
             if (response.IsSuccessStatusCode)
             {
                 var content = await response.Content.ReadAsStringAsync();
-                
+
                 return JsonConvert.DeserializeObject<IEnumerable<User>>(content);
             }
+
             return null;
         }
 
         public async Task<User> CreateAsync(UserForCreation student)
         {
-            var Student = JsonConvert.SerializeObject(student);
-            var content = new StringContent(Student, System.Text.Encoding.UTF8, "application/json");
-            var response =await _httpClient.PostAsync(_url, content);
-            
+            var newUser = JsonConvert.SerializeObject(student);
+
+            var requestContent = new StringContent
+                (newUser, Encoding.UTF8, "application/json");
+
+            var response = await _httpClient.PostAsync
+                (_url, requestContent);
+
             if (response.IsSuccessStatusCode)
             {
-                var result = await response.Content.ReadAsStringAsync();
+                var content = await response.Content.ReadAsStringAsync();
                 
-                var res2 = JsonConvert.DeserializeObject<User>(result);
-                await _userRepository.CreateAsync(res2);
+                var createdUser = JsonConvert.DeserializeObject<User>(content);
+
+                await _userRepository.CreateAsync(createdUser);
+
                 await _userRepository.SaveAsync();
 
-                return res2;
+                return createdUser;
             }
 
             return null;
@@ -79,21 +90,27 @@ namespace examWPF.Service.Service
 
         public async Task<User> UpdateAsync(long id, UserForCreation student)
         {
-            var newstudentAsJson = JsonConvert.SerializeObject(student);
+            var newUserAsJson = JsonConvert.SerializeObject(student);
 
-            StringContent responseContent = new StringContent(newstudentAsJson, Encoding.UTF8, "application/json");
-            
-            var response = await _httpClient.PutAsync(_url + id, responseContent);
+            StringContent responseContent = new(newUserAsJson,
+                Encoding.UTF8, "application/json");
+
+            var response = await _httpClient.PutAsync
+                (_url + id, responseContent);
+
 
             if (response.IsSuccessStatusCode)
             {
                 var content = await response.Content.ReadAsStringAsync();
 
-                var res2 = JsonConvert.DeserializeObject<User>(content);
-                await _userRepository.UpdateAsync(res2);
+                content = content.Replace('\\', '/');
+
+                var updatedUser = JsonConvert.DeserializeObject<User>(content);
+
+                await _userRepository.UpdateAsync(updatedUser);
+
                 await _userRepository.SaveAsync();
-                
-                return res2;
+                return updatedUser;
             }
 
             return null;
@@ -101,28 +118,55 @@ namespace examWPF.Service.Service
 
         public async Task<bool> DeleteAsync(long id)
         {
-            var response =await _httpClient.DeleteAsync(_url + id);
+            var response = await _httpClient.DeleteAsync(_url + id);
+
             if (response.IsSuccessStatusCode)
             {
+                if (id > 320)
+                {
+                    await _userRepository.DeleteAsync(p => p.Id == id);
+                   await _userRepository.SaveAsync();
+                }
                 return true;
+
             }
             return false;
         }
 
-        public async Task PassPicturesAsync(long id, string imagePath, string passportPath)
+        public async Task UploadPicturesAsync(long id, string imagePath, string passportPath)
         {
-            using HttpClient client = new HttpClient();
-            
-            MultipartFormDataContent formData = new MultipartFormDataContent();
+            using HttpClient client = new();
+
+            MultipartFormDataContent formData = new();
+
             if (imagePath is not null)
+            {
                 formData.Add(new StreamContent(File.OpenRead(imagePath)), "image", "image.png");
-
+            }
             if (passportPath is not null)
+            {
                 formData.Add(new StreamContent(File.OpenRead(passportPath)), "passport", "passport.png");
+            }
 
-            HttpResponseMessage response = await client.PostAsync(_url + "attachments/" + id, formData);
+            var isUploadedSucceccfully = await client.PostAsync(_url + "attachments/" + id, formData);
 
-            string message = await response.Content.ReadAsStringAsync();
+
+
+            if (isUploadedSucceccfully.IsSuccessStatusCode)
+            {
+                var response = await GetAsync(id);
+
+                await attachmentRepository.CreateAsync(response.Image);
+
+                await attachmentRepository.CreateAsync(response.Passport);
+
+               await attachmentRepository.SaveAsync();
+                
+               return;
+            }
+            
+            
+
         }
 
         public void Dispose()
@@ -130,4 +174,6 @@ namespace examWPF.Service.Service
             GC.SuppressFinalize(this);
         }
     }
+
 }
+

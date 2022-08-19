@@ -12,12 +12,12 @@ namespace examWPF.Service.Interfaces
 
         Task<IEnumerable<User>> GetAllAsync();
 
-        Task<User> CreateAsync(UserForCreation student);
+        Task<User> CreateAsync(UserForCreation User);
 
-        Task<User> UpdateAsync(long id, UserForCreation student);
+        Task<User> UpdateAsync(long id, UserForCreation User);
 
         Task<bool> DeleteAsync(long id);
 
-        Task PassPicturesAsync(long id, string imagePath, string passportPath);
+        Task UploadPicturesAsync(long id, string imagePath, string passportPath);
     }
 }

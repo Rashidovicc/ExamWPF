@@ -31,7 +31,6 @@ namespace examWPF.Data.Repository
                    return false;
 
                _dbSet.Remove(entity);
-
                return true;
             }
        
@@ -45,7 +44,7 @@ namespace examWPF.Data.Repository
         public async Task<TSource> UpdateAsync(TSource source)
             => _dbSet.Update(source).Entity;
 
-        public Task SaveAsync()
-            => _dbContext.SaveChangesAsync();
+        public async Task SaveAsync()
+            =>await _dbContext.SaveChangesAsync();
     }
 }

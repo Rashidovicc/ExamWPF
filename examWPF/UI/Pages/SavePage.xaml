@@ -117,7 +117,7 @@
                                    Height="25"
                                    Background="#607EAA"
                                    BorderThickness="0"
-                                   Margin="100 2 2 2"></Button>
+                                   Margin="50 2 2 2"></Button>
                        </DockPanel>
                    </Border>
                    
