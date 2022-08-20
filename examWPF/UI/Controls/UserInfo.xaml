@@ -6,9 +6,9 @@
              xmlns:local="clr-namespace:examWPF.UI.Controls"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" MouseDown="ID_OnMouseDown"
-             Height="60" MinWidth="250" MaxWidth="400">
-    <Grid Background="#1C3879" >
-        <Border Background="#EAE3D2"  Margin="2">
+             Height="65" MinWidth="250" MaxWidth="400" Background="Transparent">
+    <Border Background="#06113C" CornerRadius="15" Margin="2">
+        <Border Background="#8FBDD3"  CornerRadius="15" Margin="2">
             
             <Grid>
                 
@@ -52,5 +52,5 @@
             </Grid>
             
         </Border>
-    </Grid>
+    </Border>
 </UserControl>

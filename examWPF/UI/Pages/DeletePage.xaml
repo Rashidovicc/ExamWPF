@@ -10,7 +10,7 @@
      <Border 
             CornerRadius="15"
             Opacity="1"
-            Background="#ECE5C7">
+            Background="#8FBDD3">
         
         <Grid>
             <Grid.RowDefinitions>
@@ -58,6 +58,7 @@
                             Click="ButtonBase_OnClick"
                             Content="Delete"
                             FontSize="13"
+                            materialDesign:ShadowAssist.ShadowDepth="Depth5"
                             BorderThickness="0"
                             materialDesign:ButtonAssist.CornerRadius="5" 
                             Height="25"

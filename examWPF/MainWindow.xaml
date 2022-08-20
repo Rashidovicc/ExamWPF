@@ -30,32 +30,29 @@
                                 </Grid.ColumnDefinitions>
                 
 
-                        <Grid Grid.Column="0"  >
-                                <Grid.Background>
-                                        <LinearGradientBrush StartPoint="12,0" EndPoint="0.14,1.3">
-                                                <GradientStop Color="#354259" Offset="0.0"/>
-                                                <GradientStop Color="#293462" Offset="0.5"/>
-                                                <GradientStop Color="#CDC2AE" Offset="0.9"/>
-                                        </LinearGradientBrush>
-                                </Grid.Background>
+                        <Grid Grid.Column="0" Background="#112B3C" >
                         </Grid>
         
-                        <Grid Grid.Column="1" Background="#ECE5C7">
+                        <Grid  Grid.Column="1" Background="#112B3C">
                                 <Grid.RowDefinitions>
                                         <RowDefinition Height="50"/>
                                         <RowDefinition />
                                 </Grid.RowDefinitions>
                                 
-                                <Grid Grid.Row="0">
-                                        <TextBox Name="SearchTxt" TextChanged="SearchTxt_OnTextChanged" Margin="8" Background="#242F3D"
+                                <Grid Grid.Row="0" >
+                                        
+                                        <TextBox
+                                                Name="SearchTxt" TextChanged="SearchTxt_OnTextChanged" Margin="8" Background="#4D4C7D"
                                                  md:TextFieldAssist.TextFieldCornerRadius="3" md:HintAssist.Hint="Search" BorderThickness="0"
-                                                 Foreground="Snow" Padding="8" md:TextFieldAssist.UnderlineBrush="Transparent"/>
+                                                 Foreground="White" Padding="8" md:TextFieldAssist.UnderlineBrush="White"/>
+                                        
+                                        
                                 </Grid>
                                 
                                 
                                 <Border Grid.Row="1" CornerRadius="10" Margin="10">
                                         <Grid>
-                                                <ScrollViewer ScrollViewer.VerticalScrollBarVisibility="Visible">
+                                                <ScrollViewer ScrollViewer.VerticalScrollBarVisibility="Visible" Background="#4D4C7D">
                                                         <ItemsControl Name="UsersList">
 
                                                         </ItemsControl>
@@ -71,7 +68,7 @@
                                         <LinearGradientBrush StartPoint="0.1,0" EndPoint="0.3,1">
                                                 <GradientStop Color="#F5E8E4" Offset="0.4"/>
                                                 <GradientStop Color="#293462" Offset="0.1"/>
-                                                <GradientStop Color="#242F9B" Offset="0.9"/>
+                                                <GradientStop Color="#293462" Offset="0.9"/>
                                         </LinearGradientBrush>
                                 </Grid.Background>
                                 
@@ -80,20 +77,26 @@
                                         <RowDefinition Height="4*"/>
                                 </Grid.RowDefinitions>
                                                                                                 
-                                <Border Margin="15"
-                                        Opacity="0.6"
-                                        CornerRadius="15"
-                                        Background="#293462"></Border>
+                               <Border Background="#06113C" 
+                                       CornerRadius="15" 
+                                       Margin="10">
+                                       <Border Margin="5"
+                                               Opacity="0.6"
+                                               CornerRadius="15"
+                                               Background="#4D4C7D"></Border>
+                               </Border>
                                 
                                 <Button Grid.Row="0" x:Name="SaveButton" Width="158" Height="60"
-                                        Click="SaveButton_OnClick" Background="#EAE3D2" BorderThickness="0"
+                                        md:ButtonAssist.CornerRadius="15" 
+                                        md:ShadowAssist.ShadowDepth="Depth5"
+                                        Click="SaveButton_OnClick" Background="#8FBDD3" BorderThickness="0"
                                         HorizontalAlignment="Left" Margin="60 0 0 0">
                                         <StackPanel Orientation="Horizontal">
                                                 <md:PackIcon Width="50" Height="50"
                                                         Kind="ContentSaveAllOutline"
-                                                        Foreground="#100F0F"/>
+                                                        Foreground="#354259"/>
                                                 <TextBlock Margin="10" VerticalAlignment="Center"
-                                                        FontSize="23" Foreground="#100F0F"
+                                                        FontSize="23" Foreground="#354259"
                                                         Text="SAVE" FontWeight="SemiBold"
                                                         />
                                                 
@@ -104,19 +107,22 @@
                                         x:Name="DeleteButton"
                                         Width="158"
                                         Height="60"
+                                        md:ShadowAssist.ShadowDepth="Depth5"
+                                        md:ButtonAssist.CornerRadius="15" 
+
                                         Click="ButtonBase_OnClick"
-                                        Background="#EAE3D2"
+                                        Background="#8FBDD3"
                                         BorderThickness="0">
                                         <StackPanel Orientation="Horizontal">
                                                 <md:PackIcon
                                                         Width="50"
                                                         Height="50"
                                                         Kind="DeleteCircle"
-                                                        Foreground="#100F0F"/>
+                                                        Foreground="#354259"/>
                                                 <TextBlock
                                                         VerticalAlignment="Center"
                                                         FontSize="23"
-                                                        Foreground="#100F0F"
+                                                        Foreground="#354259"
                                                         Text="DELETE"
                                                         FontWeight="SemiBold"
                                                         />
@@ -126,7 +132,9 @@
                                         Width="158"
                                         Height="60"
                                         Click="SaveBtn_Click"
-                                        Background="#EAE3D2"
+                                        md:ShadowAssist.ShadowDepth="Depth5"
+                                        md:ButtonAssist.CornerRadius="15" 
+                                        Background="#8FBDD3"
                                         BorderThickness="0"
                                         HorizontalAlignment="Right"
                                         Margin="0 0 60 0">
@@ -135,23 +143,23 @@
                                                         Width="50"
                                                         Height="50"
                                                         Kind="AccountAdd"
-                                                        Foreground="#100F0F"/>
+                                                        Foreground="#354259"/>
                                                 <TextBlock
                                                         Margin="10"
                                                         VerticalAlignment="Center"
                                                         FontSize="23"
-                                                        Foreground="#100F0F"
+                                                        Foreground="#354259"
                                                         Text="ADD"
                                                         FontWeight="SemiBold"/>
                                         </StackPanel>
                                         
                                 </Button>
                                 
-                                <Border Grid.Row="1" Background="#354259" CornerRadius="15" Margin="10">
+                                <Border Grid.Row="1" Background="#06113C" CornerRadius="15" Margin="10 " >
                                         <Border 
                                                 Margin="6"
                                                 CornerRadius="15"
-                                                Background="#ECE5C7">
+                                                Background="#8FBDD3">
                                                 <Frame Grid.Row="0" Name="SaveFrame" Opacity="1" NavigationUIVisibility="Hidden"/>
                                        
                                         </Border>
@@ -165,7 +173,7 @@
                         </Grid>
                         </Grid>
                        
-                       <Border x:Name="MoveP" MouseDown="MainWindow_OnMouseDown" Grid.Row="0" Background="#293462" >
+                       <Border x:Name="MoveP" MouseDown="MainWindow_OnMouseDown" Grid.Row="0" Background="#112B3C" >
                                        <!--Ellipse-->
                                        <StackPanel Orientation="Horizontal" 
                                                    VerticalAlignment="Top"
